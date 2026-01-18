@@ -12,7 +12,7 @@
         }
 
         body {
-            background: #050505;
+            background: #210000;
             font-family: 'Courier New', monospace;
             display: flex;
             flex-direction: column;
@@ -147,6 +147,210 @@
             50% { transform: translate(5px, -5px); }
             100% { transform: translate(-5px, 5px); }
         }
+
+        .progress-container {
+            width: 80%;
+            max-width: 600px;
+            height: 40px;
+            background: #333;
+            border: 2px solid #ff0000;
+            margin: 20px auto;
+            position: relative;
+            display: none;
+        }
+
+        .progress-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #ff0000, #ff6600);
+            width: 0%;
+            transition: width 0.1s linear;
+        }
+
+        .progress-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-weight: bold;
+            z-index: 1;
+        }
+
+        .warning-text {
+            color: #ff0000;
+            font-size: 1.5rem;
+            margin: 20px;
+            text-align: center;
+            display: none;
+            text-shadow: 0 0 10px #ff0000;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* 滑动视频窗口样式 */
+        .floating-webcam {
+            position: fixed;
+            width: 180px;
+            height: 135px;
+            border: 3px solid #ff0000;
+            box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
+            z-index: 1002;
+            display: none;
+            object-fit: cover;
+        }
+
+        /* 每个视频窗口的滑动动画 */
+        @keyframes float1 {
+            0% { left: -200px; top: 10%; }
+            50% { left: 50%; top: 20%; }
+            100% { left: 110%; top: 30%; }
+        }
+
+        @keyframes float2 {
+            0% { right: -200px; top: 40%; }
+            50% { right: 50%; top: 50%; }
+            100% { right: 110%; top: 60%; }
+        }
+
+        @keyframes float3 {
+            0% { left: 50%; top: -200px; }
+            50% { left: 30%; top: 50%; }
+            100% { left: 10%; top: 110%; }
+        }
+
+        @keyframes float4 {
+            0% { right: 20%; bottom: -200px; }
+            50% { right: 60%; bottom: 40%; }
+            100% { right: 100%; bottom: 110%; }
+        }
+
+        @keyframes float5 {
+            0% { left: 110%; top: 50%; }
+            50% { left: 50%; top: 70%; }
+            100% { left: -10%; top: 90%; }
+        }
+
+        .floating-webcam:nth-child(1) {
+            animation: float1 8s ease-in-out infinite;
+        }
+
+        .floating-webcam:nth-child(2) {
+            animation: float2 10s ease-in-out infinite;
+            animation-delay: 1s;
+        }
+
+        .floating-webcam:nth-child(3) {
+            animation: float3 12s ease-in-out infinite;
+            animation-delay: 2s;
+        }
+
+        .floating-webcam:nth-child(4) {
+            animation: float4 9s ease-in-out infinite;
+            animation-delay: 0.5s;
+        }
+
+        .floating-webcam:nth-child(5) {
+            animation: float5 11s ease-in-out infinite;
+            animation-delay: 1.5s;
+        }
+
+        /* 温馨结尾页面 */
+        .surprise-page {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 10000;
+            opacity: 0;
+            transition: opacity 2s ease-in-out;
+        }
+
+        .surprise-page.show {
+            opacity: 1;
+        }
+
+        .surprise-content {
+            text-align: center;
+            color: white;
+            padding: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 30px;
+            backdrop-filter: blur(10px);
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .surprise-emoji {
+            font-size: 5rem;
+            margin-bottom: 20px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .surprise-title {
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin-bottom: 20px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .surprise-message {
+            font-size: 1.3rem;
+            line-height: 1.8;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'PingFang SC', 'Hiragino Sans GB', 'Microsoft YaHei', sans-serif;
+            margin-bottom: 15px;
+        }
+
+        .surprise-signature {
+            font-size: 1.5rem;
+            font-style: italic;
+            margin-top: 30px;
+            opacity: 0.9;
+        }
+
+        /* 花瓣效果 */
+        .flower {
+            position: absolute;
+            font-size: 2rem;
+            animation: fall 10s linear infinite;
+            opacity: 0.7;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(100vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -155,13 +359,62 @@
     <div class="crack-layer" id="crackLayer"></div>
     <div class="lcd-damage" id="lcdDamage"></div>
 
+    <!-- 音频元素 -->
+    <audio id="bgMusic" loop>
+        <!-- 紧张的背景音乐 -->
+        <source src="https://assets.mixkit.co/active_storage/sfx/2869/2869-preview.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="explosionSound">
+        <!-- 爆炸声 -->
+        <source src="https://assets.mixkit.co/active_storage/sfx/2803/2803-preview.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="mozartMusic" loop>
+        <!-- 莫扎特第40交响曲第一乐章 -->
+        <source src="https://upload.wikimedia.org/wikipedia/commons/2/24/Mozart_-_Symphony_No._40_in_G_minor%2C_K._550_-_I._Molto_allegro.ogg" type="audio/ogg">
+    </audio>
+    
+    <!-- 5个滑动的摄像头视频窗口 -->
+    <div id="webcamContainer">
+        <video class="floating-webcam" id="webcam1"></video>
+        <video class="floating-webcam" id="webcam2"></video>
+        <video class="floating-webcam" id="webcam3"></video>
+        <video class="floating-webcam" id="webcam4"></video>
+        <video class="floating-webcam" id="webcam5"></video>
+    </div>
+
     <div class="container" id="ui">
         <h1>You've Been Hacked!</h1>
         <div class="bomb" id="bomb">💣</div>
         <div class="countdown" id="countDisplay">10</div>
         <div class="encryption-text">All your files are being encrypted.</div>
     </div>
-
+    <div class="surprise-page" id="surprisePage">
+        <div class="surprise-content">
+            <div style="font-size: 5rem;">✨🎁✨</div>
+            <div class="surprise-title">嘿，别担心！</div>
+            <div class="surprise-message">
+                这只是 <strong>Matt</strong> 送给你的一个小玩笑。<br>
+                你的文件非常安全。<br>
+                祝你今天有个超棒的心情！
+            </div>
+            <div style="font-size: 3rem; margin-top: 20px;">🌹 😊 🍭</div>
+        </div>
+    </div>
+    <!-- 温馨惊喜页面 
+    <div class="surprise-page" id="surprisePage">
+        <div class="surprise-content">
+            <div class="surprise-emoji">🌸🌺✨</div>
+            <div class="surprise-title">Just Kidding!</div>
+            <div class="surprise-message">
+                A little surprise from <strong>Matt</strong><br><br>
+                Rest assured, all your files are fine.<br>
+                Just a joke!
+            </div>
+            <div class="surprise-emoji">😊❤️</div>
+            <div class="surprise-signature">Have a wonderful day! 🌟</div>
+        </div>
+    </div>
+-->
     <script>
         let count = 10;
         const countDisplay = document.getElementById('countDisplay');
@@ -170,23 +423,125 @@
         const crackLayer = document.getElementById('crackLayer');
         const lcdDamage = document.getElementById('lcdDamage');
         const ui = document.getElementById('ui');
+        const bgMusic = document.getElementById('bgMusic');
+        const explosionSound = document.getElementById('explosionSound');
+        const mozartMusic = document.getElementById('mozartMusic');
+        const webcams = [
+            document.getElementById('webcam1'),
+            document.getElementById('webcam2'),
+            document.getElementById('webcam3'),
+            document.getElementById('webcam4'),
+            document.getElementById('webcam5')
+        ];
 
-        // 点击页面进入全屏
+        // 创建 Web Audio API 上下文
+        let audioContext;
+        
+        // CS炸弹"嘀"声（C4 beep）
+        function playBeepSound() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            // CS经典的高频嘀嘀声
+            oscillator.type = 'square';
+            oscillator.frequency.setValueAtTime(1200, audioContext.currentTime);
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.1);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.1);
+        }
+        
+        // 爆炸音效
+        function playScreamSound() {
+            if (!audioContext) {
+                audioContext = new (window.AudioContext || window.webkitAudioContext)();
+            }
+            
+            // 生成尖叫/警报声
+            const oscillator = audioContext.createOscillator();
+            const gainNode = audioContext.createGain();
+            
+            oscillator.connect(gainNode);
+            gainNode.connect(audioContext.destination);
+            
+            oscillator.type = 'sawtooth';
+            oscillator.frequency.setValueAtTime(800, audioContext.currentTime);
+            oscillator.frequency.exponentialRampToValueAtTime(200, audioContext.currentTime + 0.5);
+            
+            gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.5);
+            
+            oscillator.start(audioContext.currentTime);
+            oscillator.stop(audioContext.currentTime + 0.5);
+        }
+
+        // 随机惊吓：在3-7秒内突然闪烁和发出声音
+        setTimeout(() => {
+            // 突然全屏闪烁
+            flash.style.opacity = '1';
+            setTimeout(() => { flash.style.opacity = '0'; }, 100);
+            
+            // 播放尖叫音效
+            playScreamSound();
+            
+            // 屏幕剧烈抖动
+            document.body.style.animation = 'heavy-shake 0.05s 10';
+        }, Math.random() * 4000 + 3000);
+
+        // 点击页面进入全屏并请求摄像头权限（吓人）
         document.body.addEventListener('click', () => {
+            // 启动背景音乐
+            bgMusic.volume = 0.3;
+            bgMusic.play().catch(() => {});
+            
             if (document.documentElement.requestFullscreen) {
                 document.documentElement.requestFullscreen();
             }
+            
+            // 请求摄像头访问（会弹出权限提示，很吓人）
+            navigator.mediaDevices.getUserMedia({ video: true })
+                .then(stream => {
+                    // 让5个视频窗口都显示同一个摄像头流并开始滑动
+                    webcams.forEach((webcam, index) => {
+                        webcam.srcObject = stream;
+                        webcam.play();
+                        // 延迟显示，制造出现效果
+                        setTimeout(() => {
+                            webcam.style.display = 'block';
+                        }, index * 300);
+                    });
+                })
+                .catch(() => {});
         }, { once: true });
 
         const timer = setInterval(() => {
             count--;
             countDisplay.textContent = count;
+            
+            // CS风格：每次倒计时播放"嘀"声
+            playBeepSound();
 
-            // 越接近 0 越红，抖动越快
+            // 越接近 0 越红，抖动越快，嘀嘀声越快
             if (count <= 5) {
                 document.body.style.background = count % 2 === 0 ? '#200' : '#050505';
                 bomb.style.animationDuration = '0.05s';
                 bomb.style.transform = 'scale(1.2)';
+            }
+            
+            // 最后3秒加快嘀嘀声频率
+            if (count <= 3 && count > 0) {
+                setTimeout(() => playBeepSound(), 250);
+                setTimeout(() => playBeepSound(), 500);
+                setTimeout(() => playBeepSound(), 750);
             }
 
             if (count <= 0) {
@@ -198,6 +553,14 @@
         function triggerExplosion() {
             // 1. 产生冲击闪烁
             flash.style.opacity = '1';
+            
+            // 播放爆炸音效
+            playScreamSound();
+            explosionSound.volume = 0.7;
+            explosionSound.play().catch(() => {});
+            
+            // 停止背景音乐
+            bgMusic.pause();
             
             // 2. 瞬间切换状态
             setTimeout(() => {
@@ -211,11 +574,29 @@
                 // 整个 body 开始高频抖动
                 document.body.classList.add('broken-active');
                 
-                // 模拟蓝屏后的报错文字（可选）
+                // 模拟蓝屏后的报错文字
                 const errorMsg = document.createElement('div');
                 errorMsg.style.cssText = "color:white; font-size:1.5rem; text-align:center; z-index:1001; position:relative; padding: 20px;";
                 errorMsg.innerHTML = "CRITICAL_PROCESS_DIED<br>ERROR CODE: 0x000000EF";
                 document.body.appendChild(errorMsg);
+
+                // 添加假的加密进度条
+                const progressContainer = document.createElement('div');
+                progressContainer.className = 'progress-container';
+                progressContainer.style.display = 'block';
+                progressContainer.innerHTML = `
+                    <div class="progress-bar" id="progressBar"></div>
+                    <div class="progress-text" id="progressText">Encrypting: 0%</div>
+                `;
+                document.body.appendChild(progressContainer);
+
+                // 添加闪烁警告
+                const warning = document.createElement('div');
+                warning.className = 'warning-text';
+                warning.style.display = 'block';
+                warning.style.animation = 'blink 0.5s infinite';
+                warning.textContent = '⚠️ DO NOT TURN OFF YOUR COMPUTER ⚠️';
+                document.body.appendChild(warning);
 
                 // 渐隐白色闪烁层
                 setTimeout(() => {
@@ -223,10 +604,86 @@
                     flash.style.opacity = '0';
                 }, 100);
 
-                // 模拟触觉反馈
-                if (navigator.vibrate) navigator.vibrate([200, 100, 200]);
+                // 模拟触觉反馈（手机会震动）
+                if (navigator.vibrate) navigator.vibrate([200, 100, 200, 100, 200]);
+                
+                // 启动假进度条
+                let progress = 0;
+                const progressBar = document.getElementById('progressBar');
+                const progressText = document.getElementById('progressText');
+                const progressInterval = setInterval(() => {
+                    progress += Math.random() * 3;
+                    if (progress > 100) progress = 100;
+                    progressBar.style.width = progress + '%';
+                    progressText.textContent = `Encrypting: ${Math.floor(progress)}%`;
+                    
+                    // 随机闪烁
+                    if (Math.random() > 0.7) {
+                        document.body.style.background = '#ff0000';
+                        setTimeout(() => { document.body.style.background = '#050505'; }, 50);
+                    }
+                    
+                    if (progress >= 100) {
+                        clearInterval(progressInterval);
+                        progressText.textContent = 'Encryption Complete 😈';
+                        
+                        // 2秒后显示温馨惊喜页面
+                        setTimeout(() => {
+                            showSurprisePage();
+                        }, 2000);
+                    }
+                }, 200);
                 
             }, 50); 
+        }
+
+        // 显示温馨惊喜页面
+        function showSurprisePage() {
+            const surprisePage = document.getElementById('surprisePage');
+            surprisePage.style.display = 'flex';
+            
+            // 渐隐效果
+            setTimeout(() => {
+                surprisePage.classList.add('show');
+            }, 100);
+            
+            // 停止所有恐怖效果
+            document.body.classList.remove('broken-active');
+            document.body.style.animation = 'none';
+            
+            // 停止所有之前的音效并播放莫扎特音乐
+            bgMusic.pause();
+            explosionSound.pause();
+            mozartMusic.volume = 0.5;
+            mozartMusic.play().catch(() => {});
+            
+            // 添加飘落的花瓣
+            for (let i = 0; i < 20; i++) {
+                setTimeout(() => {
+                    createFlower();
+                }, i * 300);
+            }
+            
+            // 持续生成花瓣
+            setInterval(createFlower, 2000);
+        }
+
+        // 创建花瓣元素
+        function createFlower() {
+            const flowers = ['🌸', '🌺', '🌼', '🌻', '🌷', '🌹', '✨', '🦋'];
+            const flower = document.createElement('div');
+            flower.className = 'flower';
+            flower.textContent = flowers[Math.floor(Math.random() * flowers.length)];
+            flower.style.left = Math.random() * 100 + '%';
+            flower.style.animationDuration = (Math.random() * 5 + 5) + 's';
+            flower.style.animationDelay = Math.random() * 2 + 's';
+            
+            document.getElementById('surprisePage').appendChild(flower);
+            
+            // 10秒后移除
+            setTimeout(() => {
+                flower.remove();
+            }, 10000);
         }
     </script>
 </body>
